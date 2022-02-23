@@ -1,3 +1,4 @@
+-- INNSERT
 declare
 
 usuario USUARIOS_DAVID%ROWTYPE;
@@ -16,6 +17,50 @@ INTO usuario
 FROM DUAL;
 
 PKG_USUARIOS_DAVID.PROC_REGISTRAR_USUARIO(usuario);
+
+END;
+
+select * from USUARIOS_DAVID;
+
+--UPDATE
+
+declare
+
+updateUsuario USUARIOS_DAVID%ROWTYPE;
+
+BEGIN
+
+SELECT
+6,
+65856545,
+'Ricardo',
+'Lopez',
+'Mera',
+'Calle 85a 34',
+35
+INTO updateUsuario
+FROM DUAL;
+
+PKG_USUARIOS_DAVID.PROC_ACTUALIZAR_USUARIO(updateUsuario);
+
+END;
+
+select * from USUARIOS_DAVID;
+
+
+--DELETE
+declare
+
+idUsuario USUARIOS_DAVID.id%TYPE;
+
+BEGIN
+
+SELECT
+7
+INTO idUsuario
+FROM DUAL;
+
+PKG_USUARIOS_DAVID.PROC_ELIMINAR_USUARIO(idUsuario);
 
 END;
 
