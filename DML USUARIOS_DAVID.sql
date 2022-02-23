@@ -1,0 +1,22 @@
+declare
+
+usuario USUARIOS_DAVID%ROWTYPE;
+
+BEGIN
+
+SELECT
+SEC_ID_USUARIOS_DAVID.NEXTVAL,
+45654666,
+'Pablo',
+'Hernadez',
+'Torres',
+'Carrera 100 b 34',
+50
+INTO usuario
+FROM DUAL;
+
+PKG_USUARIOS_DAVID.PROC_REGISTRAR_USUARIO(usuario);
+
+END;
+
+select * from USUARIOS_DAVID;
