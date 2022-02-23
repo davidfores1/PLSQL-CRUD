@@ -65,3 +65,10 @@ PKG_USUARIOS_DAVID.PROC_ELIMINAR_USUARIO(idUsuario);
 END;
 
 select * from USUARIOS_DAVID;
+
+--consultar datos por id de usuarios_david
+
+select PKG_USUARIOS_DAVID.func_datos_id(1)as usuario from dual;
+
+--consultar todos los datos de usuarios_david
+select PKG_USUARIOS_DAVID.PROC_DATOS_USUARIOS from dual;

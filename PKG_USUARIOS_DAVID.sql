@@ -21,6 +21,9 @@ create or replace PACKAGE PKG_USUARIOS_DAVID AS
 	--------------------------------------------------------------------------------*/
 /*==============================================================*/
 
+     /* Declaración de variable tipo cursor */
+    TYPE tipo_cursor IS REF CURSOR;
+
 
 	PROCEDURE PROC_REGISTRAR_USUARIO
 	(
@@ -38,10 +41,21 @@ create or replace PACKAGE PKG_USUARIOS_DAVID AS
 	(
 		 procIdUsuario   IN  USUARIOS_DAVID.ID%TYPE
 	);
+    
+    Function PROC_DATOS_USUARIOS
+    Return tipo_cursor;
+    
+      Function func_datos_id
+	(
+		procIdUsuario   IN    USUARIOS_DAVID.ID%TYPE
+	)
+    Return tipo_cursor;
+    
 
 
 END PKG_USUARIOS_DAVID;
 /
+
 
 create or replace PACKAGE BODY PKG_USUARIOS_DAVID AS 
 /*==============================================================*/
@@ -134,5 +148,52 @@ create or replace PACKAGE BODY PKG_USUARIOS_DAVID AS
         id = procIdUsuario;
 
 	END PROC_ELIMINAR_USUARIO;
+    
+   -------------------------------------------------------------------------------
+  -- FUNCION PARA OBTENER UN CURSOR CON TODOS LOS DATOS
+  -------------------------------------------------------------------------------
+  Function PROC_DATOS_USUARIOS
+  RETURN tipo_cursor IS
+  
+  /*VARIABLE CURSOR*/
+  cursorDatosUsuarios tipo_cursor;
+
+	Begin
+
+   Open cursorDatosUsuarios For
+       Select
+        *
+       From
+        USUARIOS_DAVID;
+
+    Return cursorDatosUsuarios;
+
+	End PROC_DATOS_USUARIOS;
+    
+    -------------------------------------------------------------------------------
+  -- FUNCION PARA OBTENER UN CURSOR CON SUS DATOS
+  -------------------------------------------------------------------------------
+  Function func_datos_id
+	(
+		procIdUsuario IN  USUARIOS_DAVID.ID%TYPE
+	)
+ RETURN tipo_cursor IS
+
+  /*VARIABLE CURSOR*/
+  cursorDatos tipo_cursor;
+
+	Begin
+
+   Open cursorDatos For
+       Select
+        *
+       From
+        USUARIOS_DAVID
+       Where
+        id = procIdUsuario;
+
+    Return cursorDatos;
+
+	End func_datos_id;
 
 END PKG_USUARIOS_DAVID;
