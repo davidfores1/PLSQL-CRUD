@@ -11,10 +11,10 @@ SELECT
 SEC_ID_USUARIOS_DAVID.NEXTVAL,
 1143985244,
 'Carol',
-'Benitez',
+'Fernanda',
 'Torres',
-'Av 3 34',
-29
+'Villa',
+'132545'
 INTO usuario
 FROM DUAL;
 
@@ -34,13 +34,13 @@ updateUsuario USUARIOS_DAVID%ROWTYPE;
 BEGIN
 
 SELECT
-6,
-65856545,
-'RICARDO',
+9,
+1234567,
+'Carol',
+'Andrea',
 'LOPEZ',
 'MERA',
-'CLL 85a 34',
-35
+'6554654ms'
 INTO updateUsuario
 FROM DUAL;
 
@@ -60,7 +60,7 @@ idUsuario USUARIOS_DAVID.id%TYPE;
 BEGIN
 
 SELECT
-8
+10
 INTO idUsuario
 FROM DUAL;
 
@@ -73,7 +73,7 @@ select * from USUARIOS_DAVID;
 	--------------------------------------------------------------------------------
 --consultar datos por id de usuarios_david
 	--------------------------------------------------------------------------------
-select PKG_USUARIOS_DAVID.func_datos_id(6)as usuario from dual;
+select PKG_USUARIOS_DAVID.func_datos_id(9)as usuario from dual;
 
 	--------------------------------------------------------------------------------
 --consultar todos los datos de usuarios_david

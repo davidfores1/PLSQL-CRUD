@@ -82,21 +82,21 @@ create or replace PACKAGE BODY PKG_USUARIOS_DAVID AS
 		(
         id,
         identificacion,
-        nombre,
-        apellido1,
-        apellido2,
-		direccion,
-        edad
+        primer_nombre,
+        segundo_nombre,
+        primer_apellido,
+        segundo_apellido,
+        contrasena
 		)
 		VALUES
 		(
         procUsuario.id,
 		procUsuario.identificacion,
-		procUsuario.nombre,
-		procUsuario.apellido1,
-		procUsuario.apellido2,
-		procUsuario.direccion,
-		procUsuario.edad
+		procUsuario.primer_nombre,
+        procUsuario.segundo_nombre,
+		procUsuario.primer_apellido,
+		procUsuario.segundo_apellido,
+		procUsuario.contrasena
 		);
 
 	END PROC_REGISTRAR_USUARIO;
@@ -119,11 +119,11 @@ create or replace PACKAGE BODY PKG_USUARIOS_DAVID AS
 		SET
         id = procUsuario.id,
 		identificacion = procUsuario.identificacion,
-		nombre = procUsuario.nombre,
-		apellido1 = procUsuario.apellido1,
-		apellido2 = procUsuario.apellido2,
-		direccion = procUsuario.direccion,
-		edad = procUsuario.edad
+		primer_nombre = procUsuario.primer_nombre,
+        segundo_nombre = procUsuario.segundo_nombre,
+		primer_apellido = procUsuario.primer_apellido,
+		segundo_apellido = procUsuario.segundo_apellido,
+        contrasena = procUsuario.contrasena
 		WHERE
         id = procUsuario.id;
 
